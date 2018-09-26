@@ -1,0 +1,26 @@
+{
+  "name": "iotaxi",
+  "version": "1.0.0",
+  "description": "Backend taxisMap",
+  "main": "src/index.js",
+  "author": "Cristian Contreras",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node src/bin/www",
+    "server": "nodemon nodemon -L src/bin/www",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "global": "^4.3.2",
+    "graphql-cli": "^2.16.7",
+    "graphql-yoga": "^1.16.2",
+    "jest": "^23.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "prisma-binding": "^2.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}

@@ -1,0 +1,22 @@
+#import Device,Messages from './generated/prisma.graphql'
+
+type Query {
+    devices: [Device!]!
+    device: Device!
+    messages: [Messages!]!
+    message: Messages!
+}
+
+type Mutation {
+    addDevice(sigfox: String!, name: String!, marcaVehicle: String, modeloVehicle: String, placaVehicle: String,
+  image_url_fvehicle: String, image_url_lvehicle: String, image_url_rvehicle: String, image_url_bvehicle: String,
+  image_url_conductor: String, conductorFullName: String, conductorAddress: String, conductorDistrict: String,
+  conductorNumExt: String, conductorNumInt: String, conductorTel: String, lastLocation: String, contTravel: Int,
+  contTime: Int, contKm: Int, contEfectivo: Int, create_at: DateTime, updated_at: DateTime):Device!
+
+  addMessage(device: String!, timestamp: String!, data: String!, creae_at: DateTime):Messages!
+}
+
+type Subscription {
+    newDevice:DeviceSubscriptionPayload
+}

@@ -1,0 +1,1473 @@
+# source: https://back-taxi.herokuapp.com/backtax/dev
+# timestamp: Wed Sep 26 2018 11:10:53 GMT-0500 (Hora de verano central (México))
+
+type AggregateDevice {
+  count: Int!
+}
+
+type AggregateMessages {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+scalar DateTime
+
+type Device implements Node {
+  id: ID!
+  sigfox: String!
+  name: String!
+  marcaVehicle: String
+  modeloVehicle: String
+  placaVehicle: String
+  image_url_fvehicle: String
+  image_url_lvehicle: String
+  image_url_rvehicle: String
+  image_url_bvehicle: String
+  image_url_conductor: String
+  conductorFullName: String
+  conductorAddress: String
+  conductorDistrict: String
+  conductorNumExt: String
+  conductorNumInt: String
+  conductorTel: String
+  lastLocation: String
+  contTravel: Int
+  contTime: Int
+  contKm: Int
+  contEfectivo: Int
+  create_at: DateTime
+  updated_at: DateTime
+}
+
+"""A connection to a list of items."""
+type DeviceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [DeviceEdge]!
+  aggregate: AggregateDevice!
+}
+
+input DeviceCreateInput {
+  sigfox: String!
+  name: String!
+  marcaVehicle: String
+  modeloVehicle: String
+  placaVehicle: String
+  image_url_fvehicle: String
+  image_url_lvehicle: String
+  image_url_rvehicle: String
+  image_url_bvehicle: String
+  image_url_conductor: String
+  conductorFullName: String
+  conductorAddress: String
+  conductorDistrict: String
+  conductorNumExt: String
+  conductorNumInt: String
+  conductorTel: String
+  lastLocation: String
+  contTravel: Int
+  contTime: Int
+  contKm: Int
+  contEfectivo: Int
+  create_at: DateTime
+  updated_at: DateTime
+}
+
+"""An edge in a connection."""
+type DeviceEdge {
+  """The item at the end of the edge."""
+  node: Device!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum DeviceOrderByInput {
+  id_ASC
+  id_DESC
+  sigfox_ASC
+  sigfox_DESC
+  name_ASC
+  name_DESC
+  marcaVehicle_ASC
+  marcaVehicle_DESC
+  modeloVehicle_ASC
+  modeloVehicle_DESC
+  placaVehicle_ASC
+  placaVehicle_DESC
+  image_url_fvehicle_ASC
+  image_url_fvehicle_DESC
+  image_url_lvehicle_ASC
+  image_url_lvehicle_DESC
+  image_url_rvehicle_ASC
+  image_url_rvehicle_DESC
+  image_url_bvehicle_ASC
+  image_url_bvehicle_DESC
+  image_url_conductor_ASC
+  image_url_conductor_DESC
+  conductorFullName_ASC
+  conductorFullName_DESC
+  conductorAddress_ASC
+  conductorAddress_DESC
+  conductorDistrict_ASC
+  conductorDistrict_DESC
+  conductorNumExt_ASC
+  conductorNumExt_DESC
+  conductorNumInt_ASC
+  conductorNumInt_DESC
+  conductorTel_ASC
+  conductorTel_DESC
+  lastLocation_ASC
+  lastLocation_DESC
+  contTravel_ASC
+  contTravel_DESC
+  contTime_ASC
+  contTime_DESC
+  contKm_ASC
+  contKm_DESC
+  contEfectivo_ASC
+  contEfectivo_DESC
+  create_at_ASC
+  create_at_DESC
+  updated_at_ASC
+  updated_at_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type DevicePreviousValues {
+  id: ID!
+  sigfox: String!
+  name: String!
+  marcaVehicle: String
+  modeloVehicle: String
+  placaVehicle: String
+  image_url_fvehicle: String
+  image_url_lvehicle: String
+  image_url_rvehicle: String
+  image_url_bvehicle: String
+  image_url_conductor: String
+  conductorFullName: String
+  conductorAddress: String
+  conductorDistrict: String
+  conductorNumExt: String
+  conductorNumInt: String
+  conductorTel: String
+  lastLocation: String
+  contTravel: Int
+  contTime: Int
+  contKm: Int
+  contEfectivo: Int
+  create_at: DateTime
+  updated_at: DateTime
+}
+
+type DeviceSubscriptionPayload {
+  mutation: MutationType!
+  node: Device
+  updatedFields: [String!]
+  previousValues: DevicePreviousValues
+}
+
+input DeviceSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DeviceSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DeviceSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DeviceSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: DeviceWhereInput
+}
+
+input DeviceUpdateInput {
+  sigfox: String
+  name: String
+  marcaVehicle: String
+  modeloVehicle: String
+  placaVehicle: String
+  image_url_fvehicle: String
+  image_url_lvehicle: String
+  image_url_rvehicle: String
+  image_url_bvehicle: String
+  image_url_conductor: String
+  conductorFullName: String
+  conductorAddress: String
+  conductorDistrict: String
+  conductorNumExt: String
+  conductorNumInt: String
+  conductorTel: String
+  lastLocation: String
+  contTravel: Int
+  contTime: Int
+  contKm: Int
+  contEfectivo: Int
+  create_at: DateTime
+  updated_at: DateTime
+}
+
+input DeviceWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DeviceWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DeviceWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DeviceWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  sigfox: String
+
+  """All values that are not equal to given value."""
+  sigfox_not: String
+
+  """All values that are contained in given list."""
+  sigfox_in: [String!]
+
+  """All values that are not contained in given list."""
+  sigfox_not_in: [String!]
+
+  """All values less than the given value."""
+  sigfox_lt: String
+
+  """All values less than or equal the given value."""
+  sigfox_lte: String
+
+  """All values greater than the given value."""
+  sigfox_gt: String
+
+  """All values greater than or equal the given value."""
+  sigfox_gte: String
+
+  """All values containing the given string."""
+  sigfox_contains: String
+
+  """All values not containing the given string."""
+  sigfox_not_contains: String
+
+  """All values starting with the given string."""
+  sigfox_starts_with: String
+
+  """All values not starting with the given string."""
+  sigfox_not_starts_with: String
+
+  """All values ending with the given string."""
+  sigfox_ends_with: String
+
+  """All values not ending with the given string."""
+  sigfox_not_ends_with: String
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  marcaVehicle: String
+
+  """All values that are not equal to given value."""
+  marcaVehicle_not: String
+
+  """All values that are contained in given list."""
+  marcaVehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  marcaVehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  marcaVehicle_lt: String
+
+  """All values less than or equal the given value."""
+  marcaVehicle_lte: String
+
+  """All values greater than the given value."""
+  marcaVehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  marcaVehicle_gte: String
+
+  """All values containing the given string."""
+  marcaVehicle_contains: String
+
+  """All values not containing the given string."""
+  marcaVehicle_not_contains: String
+
+  """All values starting with the given string."""
+  marcaVehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  marcaVehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  marcaVehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  marcaVehicle_not_ends_with: String
+  modeloVehicle: String
+
+  """All values that are not equal to given value."""
+  modeloVehicle_not: String
+
+  """All values that are contained in given list."""
+  modeloVehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  modeloVehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  modeloVehicle_lt: String
+
+  """All values less than or equal the given value."""
+  modeloVehicle_lte: String
+
+  """All values greater than the given value."""
+  modeloVehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  modeloVehicle_gte: String
+
+  """All values containing the given string."""
+  modeloVehicle_contains: String
+
+  """All values not containing the given string."""
+  modeloVehicle_not_contains: String
+
+  """All values starting with the given string."""
+  modeloVehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  modeloVehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  modeloVehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  modeloVehicle_not_ends_with: String
+  placaVehicle: String
+
+  """All values that are not equal to given value."""
+  placaVehicle_not: String
+
+  """All values that are contained in given list."""
+  placaVehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  placaVehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  placaVehicle_lt: String
+
+  """All values less than or equal the given value."""
+  placaVehicle_lte: String
+
+  """All values greater than the given value."""
+  placaVehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  placaVehicle_gte: String
+
+  """All values containing the given string."""
+  placaVehicle_contains: String
+
+  """All values not containing the given string."""
+  placaVehicle_not_contains: String
+
+  """All values starting with the given string."""
+  placaVehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  placaVehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  placaVehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  placaVehicle_not_ends_with: String
+  image_url_fvehicle: String
+
+  """All values that are not equal to given value."""
+  image_url_fvehicle_not: String
+
+  """All values that are contained in given list."""
+  image_url_fvehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_fvehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_fvehicle_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_fvehicle_lte: String
+
+  """All values greater than the given value."""
+  image_url_fvehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_fvehicle_gte: String
+
+  """All values containing the given string."""
+  image_url_fvehicle_contains: String
+
+  """All values not containing the given string."""
+  image_url_fvehicle_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_fvehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_fvehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_fvehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_fvehicle_not_ends_with: String
+  image_url_lvehicle: String
+
+  """All values that are not equal to given value."""
+  image_url_lvehicle_not: String
+
+  """All values that are contained in given list."""
+  image_url_lvehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_lvehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_lvehicle_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_lvehicle_lte: String
+
+  """All values greater than the given value."""
+  image_url_lvehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_lvehicle_gte: String
+
+  """All values containing the given string."""
+  image_url_lvehicle_contains: String
+
+  """All values not containing the given string."""
+  image_url_lvehicle_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_lvehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_lvehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_lvehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_lvehicle_not_ends_with: String
+  image_url_rvehicle: String
+
+  """All values that are not equal to given value."""
+  image_url_rvehicle_not: String
+
+  """All values that are contained in given list."""
+  image_url_rvehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_rvehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_rvehicle_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_rvehicle_lte: String
+
+  """All values greater than the given value."""
+  image_url_rvehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_rvehicle_gte: String
+
+  """All values containing the given string."""
+  image_url_rvehicle_contains: String
+
+  """All values not containing the given string."""
+  image_url_rvehicle_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_rvehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_rvehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_rvehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_rvehicle_not_ends_with: String
+  image_url_bvehicle: String
+
+  """All values that are not equal to given value."""
+  image_url_bvehicle_not: String
+
+  """All values that are contained in given list."""
+  image_url_bvehicle_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_bvehicle_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_bvehicle_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_bvehicle_lte: String
+
+  """All values greater than the given value."""
+  image_url_bvehicle_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_bvehicle_gte: String
+
+  """All values containing the given string."""
+  image_url_bvehicle_contains: String
+
+  """All values not containing the given string."""
+  image_url_bvehicle_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_bvehicle_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_bvehicle_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_bvehicle_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_bvehicle_not_ends_with: String
+  image_url_conductor: String
+
+  """All values that are not equal to given value."""
+  image_url_conductor_not: String
+
+  """All values that are contained in given list."""
+  image_url_conductor_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_conductor_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_conductor_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_conductor_lte: String
+
+  """All values greater than the given value."""
+  image_url_conductor_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_conductor_gte: String
+
+  """All values containing the given string."""
+  image_url_conductor_contains: String
+
+  """All values not containing the given string."""
+  image_url_conductor_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_conductor_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_conductor_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_conductor_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_conductor_not_ends_with: String
+  conductorFullName: String
+
+  """All values that are not equal to given value."""
+  conductorFullName_not: String
+
+  """All values that are contained in given list."""
+  conductorFullName_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorFullName_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorFullName_lt: String
+
+  """All values less than or equal the given value."""
+  conductorFullName_lte: String
+
+  """All values greater than the given value."""
+  conductorFullName_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorFullName_gte: String
+
+  """All values containing the given string."""
+  conductorFullName_contains: String
+
+  """All values not containing the given string."""
+  conductorFullName_not_contains: String
+
+  """All values starting with the given string."""
+  conductorFullName_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorFullName_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorFullName_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorFullName_not_ends_with: String
+  conductorAddress: String
+
+  """All values that are not equal to given value."""
+  conductorAddress_not: String
+
+  """All values that are contained in given list."""
+  conductorAddress_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorAddress_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorAddress_lt: String
+
+  """All values less than or equal the given value."""
+  conductorAddress_lte: String
+
+  """All values greater than the given value."""
+  conductorAddress_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorAddress_gte: String
+
+  """All values containing the given string."""
+  conductorAddress_contains: String
+
+  """All values not containing the given string."""
+  conductorAddress_not_contains: String
+
+  """All values starting with the given string."""
+  conductorAddress_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorAddress_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorAddress_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorAddress_not_ends_with: String
+  conductorDistrict: String
+
+  """All values that are not equal to given value."""
+  conductorDistrict_not: String
+
+  """All values that are contained in given list."""
+  conductorDistrict_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorDistrict_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorDistrict_lt: String
+
+  """All values less than or equal the given value."""
+  conductorDistrict_lte: String
+
+  """All values greater than the given value."""
+  conductorDistrict_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorDistrict_gte: String
+
+  """All values containing the given string."""
+  conductorDistrict_contains: String
+
+  """All values not containing the given string."""
+  conductorDistrict_not_contains: String
+
+  """All values starting with the given string."""
+  conductorDistrict_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorDistrict_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorDistrict_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorDistrict_not_ends_with: String
+  conductorNumExt: String
+
+  """All values that are not equal to given value."""
+  conductorNumExt_not: String
+
+  """All values that are contained in given list."""
+  conductorNumExt_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorNumExt_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorNumExt_lt: String
+
+  """All values less than or equal the given value."""
+  conductorNumExt_lte: String
+
+  """All values greater than the given value."""
+  conductorNumExt_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorNumExt_gte: String
+
+  """All values containing the given string."""
+  conductorNumExt_contains: String
+
+  """All values not containing the given string."""
+  conductorNumExt_not_contains: String
+
+  """All values starting with the given string."""
+  conductorNumExt_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorNumExt_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorNumExt_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorNumExt_not_ends_with: String
+  conductorNumInt: String
+
+  """All values that are not equal to given value."""
+  conductorNumInt_not: String
+
+  """All values that are contained in given list."""
+  conductorNumInt_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorNumInt_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorNumInt_lt: String
+
+  """All values less than or equal the given value."""
+  conductorNumInt_lte: String
+
+  """All values greater than the given value."""
+  conductorNumInt_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorNumInt_gte: String
+
+  """All values containing the given string."""
+  conductorNumInt_contains: String
+
+  """All values not containing the given string."""
+  conductorNumInt_not_contains: String
+
+  """All values starting with the given string."""
+  conductorNumInt_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorNumInt_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorNumInt_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorNumInt_not_ends_with: String
+  conductorTel: String
+
+  """All values that are not equal to given value."""
+  conductorTel_not: String
+
+  """All values that are contained in given list."""
+  conductorTel_in: [String!]
+
+  """All values that are not contained in given list."""
+  conductorTel_not_in: [String!]
+
+  """All values less than the given value."""
+  conductorTel_lt: String
+
+  """All values less than or equal the given value."""
+  conductorTel_lte: String
+
+  """All values greater than the given value."""
+  conductorTel_gt: String
+
+  """All values greater than or equal the given value."""
+  conductorTel_gte: String
+
+  """All values containing the given string."""
+  conductorTel_contains: String
+
+  """All values not containing the given string."""
+  conductorTel_not_contains: String
+
+  """All values starting with the given string."""
+  conductorTel_starts_with: String
+
+  """All values not starting with the given string."""
+  conductorTel_not_starts_with: String
+
+  """All values ending with the given string."""
+  conductorTel_ends_with: String
+
+  """All values not ending with the given string."""
+  conductorTel_not_ends_with: String
+  lastLocation: String
+
+  """All values that are not equal to given value."""
+  lastLocation_not: String
+
+  """All values that are contained in given list."""
+  lastLocation_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastLocation_not_in: [String!]
+
+  """All values less than the given value."""
+  lastLocation_lt: String
+
+  """All values less than or equal the given value."""
+  lastLocation_lte: String
+
+  """All values greater than the given value."""
+  lastLocation_gt: String
+
+  """All values greater than or equal the given value."""
+  lastLocation_gte: String
+
+  """All values containing the given string."""
+  lastLocation_contains: String
+
+  """All values not containing the given string."""
+  lastLocation_not_contains: String
+
+  """All values starting with the given string."""
+  lastLocation_starts_with: String
+
+  """All values not starting with the given string."""
+  lastLocation_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastLocation_ends_with: String
+
+  """All values not ending with the given string."""
+  lastLocation_not_ends_with: String
+  contTravel: Int
+
+  """All values that are not equal to given value."""
+  contTravel_not: Int
+
+  """All values that are contained in given list."""
+  contTravel_in: [Int!]
+
+  """All values that are not contained in given list."""
+  contTravel_not_in: [Int!]
+
+  """All values less than the given value."""
+  contTravel_lt: Int
+
+  """All values less than or equal the given value."""
+  contTravel_lte: Int
+
+  """All values greater than the given value."""
+  contTravel_gt: Int
+
+  """All values greater than or equal the given value."""
+  contTravel_gte: Int
+  contTime: Int
+
+  """All values that are not equal to given value."""
+  contTime_not: Int
+
+  """All values that are contained in given list."""
+  contTime_in: [Int!]
+
+  """All values that are not contained in given list."""
+  contTime_not_in: [Int!]
+
+  """All values less than the given value."""
+  contTime_lt: Int
+
+  """All values less than or equal the given value."""
+  contTime_lte: Int
+
+  """All values greater than the given value."""
+  contTime_gt: Int
+
+  """All values greater than or equal the given value."""
+  contTime_gte: Int
+  contKm: Int
+
+  """All values that are not equal to given value."""
+  contKm_not: Int
+
+  """All values that are contained in given list."""
+  contKm_in: [Int!]
+
+  """All values that are not contained in given list."""
+  contKm_not_in: [Int!]
+
+  """All values less than the given value."""
+  contKm_lt: Int
+
+  """All values less than or equal the given value."""
+  contKm_lte: Int
+
+  """All values greater than the given value."""
+  contKm_gt: Int
+
+  """All values greater than or equal the given value."""
+  contKm_gte: Int
+  contEfectivo: Int
+
+  """All values that are not equal to given value."""
+  contEfectivo_not: Int
+
+  """All values that are contained in given list."""
+  contEfectivo_in: [Int!]
+
+  """All values that are not contained in given list."""
+  contEfectivo_not_in: [Int!]
+
+  """All values less than the given value."""
+  contEfectivo_lt: Int
+
+  """All values less than or equal the given value."""
+  contEfectivo_lte: Int
+
+  """All values greater than the given value."""
+  contEfectivo_gt: Int
+
+  """All values greater than or equal the given value."""
+  contEfectivo_gte: Int
+  create_at: DateTime
+
+  """All values that are not equal to given value."""
+  create_at_not: DateTime
+
+  """All values that are contained in given list."""
+  create_at_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  create_at_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  create_at_lt: DateTime
+
+  """All values less than or equal the given value."""
+  create_at_lte: DateTime
+
+  """All values greater than the given value."""
+  create_at_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  create_at_gte: DateTime
+  updated_at: DateTime
+
+  """All values that are not equal to given value."""
+  updated_at_not: DateTime
+
+  """All values that are contained in given list."""
+  updated_at_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updated_at_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updated_at_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updated_at_lte: DateTime
+
+  """All values greater than the given value."""
+  updated_at_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updated_at_gte: DateTime
+}
+
+input DeviceWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Messages implements Node {
+  id: ID!
+  device: String!
+  timestamp: String!
+  data: String!
+  creae_at: DateTime
+}
+
+"""A connection to a list of items."""
+type MessagesConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [MessagesEdge]!
+  aggregate: AggregateMessages!
+}
+
+input MessagesCreateInput {
+  device: String!
+  timestamp: String!
+  data: String!
+  creae_at: DateTime
+}
+
+"""An edge in a connection."""
+type MessagesEdge {
+  """The item at the end of the edge."""
+  node: Messages!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum MessagesOrderByInput {
+  id_ASC
+  id_DESC
+  device_ASC
+  device_DESC
+  timestamp_ASC
+  timestamp_DESC
+  data_ASC
+  data_DESC
+  creae_at_ASC
+  creae_at_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type MessagesPreviousValues {
+  id: ID!
+  device: String!
+  timestamp: String!
+  data: String!
+  creae_at: DateTime
+}
+
+type MessagesSubscriptionPayload {
+  mutation: MutationType!
+  node: Messages
+  updatedFields: [String!]
+  previousValues: MessagesPreviousValues
+}
+
+input MessagesSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MessagesSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MessagesSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MessagesSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: MessagesWhereInput
+}
+
+input MessagesUpdateInput {
+  device: String
+  timestamp: String
+  data: String
+  creae_at: DateTime
+}
+
+input MessagesWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MessagesWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MessagesWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MessagesWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  device: String
+
+  """All values that are not equal to given value."""
+  device_not: String
+
+  """All values that are contained in given list."""
+  device_in: [String!]
+
+  """All values that are not contained in given list."""
+  device_not_in: [String!]
+
+  """All values less than the given value."""
+  device_lt: String
+
+  """All values less than or equal the given value."""
+  device_lte: String
+
+  """All values greater than the given value."""
+  device_gt: String
+
+  """All values greater than or equal the given value."""
+  device_gte: String
+
+  """All values containing the given string."""
+  device_contains: String
+
+  """All values not containing the given string."""
+  device_not_contains: String
+
+  """All values starting with the given string."""
+  device_starts_with: String
+
+  """All values not starting with the given string."""
+  device_not_starts_with: String
+
+  """All values ending with the given string."""
+  device_ends_with: String
+
+  """All values not ending with the given string."""
+  device_not_ends_with: String
+  timestamp: String
+
+  """All values that are not equal to given value."""
+  timestamp_not: String
+
+  """All values that are contained in given list."""
+  timestamp_in: [String!]
+
+  """All values that are not contained in given list."""
+  timestamp_not_in: [String!]
+
+  """All values less than the given value."""
+  timestamp_lt: String
+
+  """All values less than or equal the given value."""
+  timestamp_lte: String
+
+  """All values greater than the given value."""
+  timestamp_gt: String
+
+  """All values greater than or equal the given value."""
+  timestamp_gte: String
+
+  """All values containing the given string."""
+  timestamp_contains: String
+
+  """All values not containing the given string."""
+  timestamp_not_contains: String
+
+  """All values starting with the given string."""
+  timestamp_starts_with: String
+
+  """All values not starting with the given string."""
+  timestamp_not_starts_with: String
+
+  """All values ending with the given string."""
+  timestamp_ends_with: String
+
+  """All values not ending with the given string."""
+  timestamp_not_ends_with: String
+  data: String
+
+  """All values that are not equal to given value."""
+  data_not: String
+
+  """All values that are contained in given list."""
+  data_in: [String!]
+
+  """All values that are not contained in given list."""
+  data_not_in: [String!]
+
+  """All values less than the given value."""
+  data_lt: String
+
+  """All values less than or equal the given value."""
+  data_lte: String
+
+  """All values greater than the given value."""
+  data_gt: String
+
+  """All values greater than or equal the given value."""
+  data_gte: String
+
+  """All values containing the given string."""
+  data_contains: String
+
+  """All values not containing the given string."""
+  data_not_contains: String
+
+  """All values starting with the given string."""
+  data_starts_with: String
+
+  """All values not starting with the given string."""
+  data_not_starts_with: String
+
+  """All values ending with the given string."""
+  data_ends_with: String
+
+  """All values not ending with the given string."""
+  data_not_ends_with: String
+  creae_at: DateTime
+
+  """All values that are not equal to given value."""
+  creae_at_not: DateTime
+
+  """All values that are contained in given list."""
+  creae_at_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  creae_at_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  creae_at_lt: DateTime
+
+  """All values less than or equal the given value."""
+  creae_at_lte: DateTime
+
+  """All values greater than the given value."""
+  creae_at_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  creae_at_gte: DateTime
+}
+
+input MessagesWhereUniqueInput {
+  id: ID
+}
+
+type Mutation {
+  createDevice(data: DeviceCreateInput!): Device!
+  createMessages(data: MessagesCreateInput!): Messages!
+  updateDevice(data: DeviceUpdateInput!, where: DeviceWhereUniqueInput!): Device
+  updateMessages(data: MessagesUpdateInput!, where: MessagesWhereUniqueInput!): Messages
+  deleteDevice(where: DeviceWhereUniqueInput!): Device
+  deleteMessages(where: MessagesWhereUniqueInput!): Messages
+  upsertDevice(where: DeviceWhereUniqueInput!, create: DeviceCreateInput!, update: DeviceUpdateInput!): Device!
+  upsertMessages(where: MessagesWhereUniqueInput!, create: MessagesCreateInput!, update: MessagesUpdateInput!): Messages!
+  updateManyDevices(data: DeviceUpdateInput!, where: DeviceWhereInput): BatchPayload!
+  updateManyMessageses(data: MessagesUpdateInput!, where: MessagesWhereInput): BatchPayload!
+  deleteManyDevices(where: DeviceWhereInput): BatchPayload!
+  deleteManyMessageses(where: MessagesWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  devices(where: DeviceWhereInput, orderBy: DeviceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Device]!
+  messageses(where: MessagesWhereInput, orderBy: MessagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Messages]!
+  device(where: DeviceWhereUniqueInput!): Device
+  messages(where: MessagesWhereUniqueInput!): Messages
+  devicesConnection(where: DeviceWhereInput, orderBy: DeviceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DeviceConnection!
+  messagesesConnection(where: MessagesWhereInput, orderBy: MessagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MessagesConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  device(where: DeviceSubscriptionWhereInput): DeviceSubscriptionPayload
+  messages(where: MessagesSubscriptionWhereInput): MessagesSubscriptionPayload
+}

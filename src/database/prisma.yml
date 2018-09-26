@@ -1,0 +1,8 @@
+endpoint: https://back-taxi.herokuapp.com/backtax/dev
+datamodel: datamodel.graphql
+
+#Deploy Hook
+
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
