@@ -13,6 +13,8 @@ const resolvers = {
     Subscription
 }
 
+//wss://back-taxi.herokuapp.com/backtax/dev
+
 const server = new GraphQLServer({
     typeDefs:'./src/schema.graphql',
     resolvers,

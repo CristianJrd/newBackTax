@@ -1,6 +1,8 @@
-#import Device,Messages from './generated/prisma.graphql'
+#import Users,Device,Messages,DeviceSubscriptionPayload from './generated/prisma.graphql'
 
 type Query {
+    users:[Users!]!
+    me:Users!
     devices: [Device!]!
     device: Device!
     messages: [Messages!]!
@@ -8,6 +10,9 @@ type Query {
 }
 
 type Mutation {
+    signup(email: String!, password: String!):AuthPayload
+    login(email: String!, password: String!):AuthPayload
+
     addDevice(sigfox: String!, name: String!, marcaVehicle: String, modeloVehicle: String, placaVehicle: String,
   image_url_fvehicle: String, image_url_lvehicle: String, image_url_rvehicle: String, image_url_bvehicle: String,
   image_url_conductor: String, conductorFullName: String, conductorAddress: String, conductorDistrict: String,
@@ -19,4 +24,9 @@ type Mutation {
 
 type Subscription {
     newDevice:DeviceSubscriptionPayload
+}
+
+type AuthPayload{
+    token: String
+    user: Users
 }

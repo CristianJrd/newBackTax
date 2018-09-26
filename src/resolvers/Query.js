@@ -1,3 +1,14 @@
+const { getUserId } = require('../utils/utils')
+
+async function users(parent,args,context,info) {
+    return context.db.query.userses({},info)
+}
+
+async function me(parent,args,context,info){
+    let id = getUserId(context)
+    return context.db.query.user({where: {id}},info)
+}
+
 async function devices(parent,args,context,info) {
     return context.db.query.devices({},info)
 }
@@ -15,6 +26,8 @@ async function message(parent,args,context,info) {
 }
 
 module.exports = {
+    users,
+    me,
     devices,
     device,
     messages,
