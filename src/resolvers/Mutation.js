@@ -33,11 +33,10 @@ const queryDevice = `{
 }`
 
 async function addDevice(parent,args,context,info) {
-/*     let newDevice = await context.db.mutation.addDevice(
-        {data:{...args:{
-            create:
-        }}
-    }) */
+    let newDevice = await context.db.mutation.createDevice(
+        {data:{...args}},queryDevice)
+
+        return newDevice
 }
 
 const queryUsers = `{
@@ -90,7 +89,22 @@ async function login(parent,args,context,info){
 
 }
 
+const queryMessage = `{
+    device,
+    timestamp,
+    data,
+    creae_at
+}`
+
+async function addMessage(parent,args,context,info){
+    const message =await context.db.mutation.createMessages(
+        {data:{...args}},queryMessage)
+
+        return message
+}
+
 module.exports = {
+    addDevice,
     signup,
     login
 }
