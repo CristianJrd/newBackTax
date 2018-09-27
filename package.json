@@ -2,7 +2,9 @@
   "name": "iotaxi",
   "version": "1.0.0",
   "description": "Backend taxisMap",
-
+  "engines": {
+    "node": "8.9.4"
+  },
   "main": "src/index.js",
   "author": "Cristian Contreras",
   "license": "MIT",
