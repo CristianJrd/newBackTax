@@ -17,7 +17,7 @@ const messageQuery = `{
     }
 }`
 
-request('https://back-taxi.herokuapp.com/createMessage', messageQuery).then(data => console.log(data))
+request('https://back-taxi.herokuapp.com/backtax/dev', messageQuery).then(data => console.log(data))
 
 const resolvers = {
     Query,

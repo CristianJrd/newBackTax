@@ -18,7 +18,7 @@ async function device(parent,args,context,info) {
 }
 
 async function messages(parent,args,context,info) {
-    return context.db.query.messages({},info)
+    return context.db.query.messageses({},info)
 }
 
 async function message(parent,args,context,info) {
