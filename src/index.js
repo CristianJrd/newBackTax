@@ -15,6 +15,8 @@ const resolvers = {
 
 //wss://back-taxi.herokuapp.com/backtax/dev
 
+
+
 const server = new GraphQLServer({
     typeDefs:'./src/schema.graphql',
     resolvers,
@@ -24,6 +26,11 @@ const server = new GraphQLServer({
         db: new Prisma({
             typeDefs: 'src/generated/prisma.graphql',
             endpoint: PRISMA_ENDPOINT,
+            debug: true
+        }),
+        sf: new Prisma({
+            typeDefs: 'src/generated/prisma.graphql',
+            endpoint: "https://back-taxi.herokuapp.com/backtax/createMessage",
             debug: true
         })
     }),
