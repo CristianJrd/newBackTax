@@ -1,11 +1,23 @@
 require('dotenv').config()
 const { GraphQLServer } =  require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
+const { request } = require('graphql-request')
 const Query = require('./resolvers/Query')
 const Mutation = require('./resolvers/Mutation')
 const Subscription = require('./resolvers/Subscription')
 
 const PRISMA_ENDPOINT = process.env.PRISMA_ENDPOINT || "https://back-taxi.herokuapp.com/backtax/dev"
+
+const messageQuery = `{
+    Messageses{
+        device
+        timestamp
+        data
+        creae_at
+    }
+}`
+
+request('https://back-taxi.herokuapp.com/createMessage', messageQuery).then(data => console.log(data))
 
 const resolvers = {
     Query,
