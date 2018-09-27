@@ -29,8 +29,8 @@ const server = new GraphQLServer({
             debug: true
         }),
         sf: new Prisma({
-            typeDefs: 'src/generated/prisma.graphql',
-            endpoint: "https://newbacktax.herokuapp.com/createMessage",
+            typeDefs: '/src/schema.graphql',
+            endpoint: "https://back-taxi.herokuapp.com/backtax/createMessage",
             debug: true
         })
     }),
