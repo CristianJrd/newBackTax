@@ -22,7 +22,7 @@ async function messages(parent,args,context,info) {
 }
 
 async function message(parent,args,context,info) {
-    return context.db.query.message({where: {id}},info)
+    return context.db.query.messages({where: {id}},info)
 }
 
 module.exports = {
