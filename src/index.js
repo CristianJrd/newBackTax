@@ -19,7 +19,7 @@ const PRISMA_ENDPOINT = process.env.PRISMA_ENDPOINT || "https://back-taxi.heroku
 }` */
 
     axios({
-        url: '/createMessage',
+        url: '/backtax/dev',
         method: 'post',
         data: {
             query: `{

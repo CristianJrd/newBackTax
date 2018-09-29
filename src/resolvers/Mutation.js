@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
 const {APP_SECRET} = require('../const')
-const {getUserId} = require('../utils/utils');
+// const {getUserId} = require('../utils/utils');
 
 const getID =  `{ id }`
 

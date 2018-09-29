@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+/* const jwt = require('jsonwebtoken')
 const {APP_SECRET} = require('../const')
 
 function getUserId(context){
@@ -14,4 +14,4 @@ function getUserId(context){
 
 module.exports ={
     getUserId
-}
+} */
