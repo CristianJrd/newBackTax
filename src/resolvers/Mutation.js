@@ -92,8 +92,7 @@ async function login(parent,args,context,info){
 const queryMessage = `{
     device,
     timestamp,
-    data,
-    creae_at
+    data
 }`
 
 async function addMessage(parent,args,context,info){

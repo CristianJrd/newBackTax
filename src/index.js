@@ -19,15 +19,14 @@ const PRISMA_ENDPOINT = process.env.PRISMA_ENDPOINT || "https://back-taxi.heroku
 }` */
 
     axios({
-        url: '/createMessage',
+        url: 'https://back-taxi.herokuapp.com/',
         method: 'post',
         data: {
             query: `{
-                Messageses{
+                messages{
                     device
                     timestamp
                     data
-                    creae_at
                 }
             }`
         }
